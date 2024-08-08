@@ -2,12 +2,13 @@
 
 **Note: this is my first time using Django**, I usually use Fast API or ExpressJS.
 
-I used a **monorepo** because because startups need speed and having full stack engineers with 1 PR per feature helps. 
+I used a monorepo because because startups need speed and having full stack engineers with 1 PR per feature helps. 
 
 ## Startup instructions: 
+x
+**Just run `docker-compose up --build` (from the root of the repo)**
 
-Just run `docker-compose up` from the root of the repo. 
-1. The backend will generate migration scripts and run them. 
+1. The backend will generate migration scripts and run them (using an entrypoint.sh file)
 2. The API will start up (port 8000)
 3. The frontend will start up (port 3000)
 
@@ -17,13 +18,12 @@ The decision to run the migrations on docker-compose is just for demo purposes a
 1. Use django REST framework to use django as purely an API.
 2. Use include() in `bank_of_china/urls` url_patterns so I can manage urls in a more modular way.
 3. Assume a 1-many relationship between customer and loan offer. As such, a loan offer needs to be linked to a customer
-4. Allow CORS for the frontend to access the API.
-5. Run frontend and backend on same network so they can communicate between docker containers
-
 ```
 class LoanOffer(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 ```
+4. Allow CORS for the frontend to access the API.
+5. Run frontend and backend on same network so they can communicate between docker containers
 
 ### CRUD + SERIALIZERS
 We need serializers to convert models to JSON for REACT (since we aren't using templates). But I don't want to define the columns twice for each model, like this:
