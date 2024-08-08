@@ -5,7 +5,7 @@
 I used a monorepo because because startups need speed and having full stack engineers with 1 PR per feature helps. 
 
 ## Startup instructions: 
-x
+
 **Just run `docker-compose up --build` (from the root of the repo)**
 
 1. The backend will generate migration scripts and run them (using an entrypoint.sh file)
